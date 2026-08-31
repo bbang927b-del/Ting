@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#18332c">
+  <title>婷婷科一｜C2免费练习</title>
+  <meta name="description" content="免费的C2科目一基础练习、错题重练与动态路权解析。">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section id="home">
+    <header class="brand">
+      <div class="mark">🚙</div>
+      <div><strong>婷婷科一</strong><small>C2 自动挡 · 免费练习</small></div>
+      <span class="pill">永久免费</span>
+    </header>
+
+    <section class="welcome">
+      <p>今天也稳稳向前一步</p>
+      <h1>把交规真正弄懂，<br><span>考试自然不慌。</span></h1>
+      <div id="source-note" class="source-note">正在加载开源基础题库…</div>
+    </section>
+
+    <button class="continue-card" data-action="practice">
+      <div class="row tiny"><span>📖 继续练习</span><em id="done-text">0 题已完成</em></div>
+      <div class="row"><div><h2 id="continue-title">从第一题开始</h2><p>答题后立即查看免费解析</p></div><b>›</b></div>
+      <div class="mini-progress"><i id="done-bar"></i></div>
+    </button>
+
+    <section class="section">
+      <div class="section-title"><h2>练习方式</h2><span>按自己的节奏来</span></div>
+      <div class="mode-grid">
+        <button class="mode" data-action="practice"><i>📖</i><strong>顺序练习</strong><span>完整打牢基础</span></button>
+        <button class="mode" data-action="random"><i>🔄</i><strong>随机练习</strong><span>检验真实掌握</span></button>
+        <button class="mode" id="wrong-mode" data-action="wrong" disabled><i>⚠️</i><strong>错题重练</strong><span id="wrong-count">答错后自动收录</span></button>
+        <button class="mode" data-action="mock"><i>⏱️</i><strong>模拟考试</strong><span>随机抽取100题</span></button>
+      </div>
+    </section>
+
+    <section class="animation-preview">
+      <div>
+        <span class="feature">✨ 特色解析</span>
+        <h2>复杂路权，看一遍动画就懂</h2>
+        <p>左转、右转、让行顺序，不再只靠死记。</p>
+        <button class="text-button" data-action="demo">查看示范 →</button>
+      </div>
+      <div class="road-demo" aria-label="右转车辆让左转车辆先行动画">
+        <div class="road road-x"></div><div class="road road-y"></div>
+        <div class="lane lane-x"></div><div class="lane lane-y"></div>
+        <div class="car car-blue">左转</div><div class="car car-orange">右转</div>
+        <div class="tag tag-one">① 左转先行</div><div class="tag tag-two">② 右转后行</div>
+      </div>
+    </section>
+
+    <section class="notice">
+      <strong>题库说明</strong>
+      <p>基础数据源自开源项目，仅供学习，不代表官方实时考试题库。题库基准为2022年，涉及法规、记分和罚款的内容请结合最新规定复核。</p>
+      <a href="https://github.com/doupoa/DrivingTestSubjectOne" target="_blank" rel="noreferrer">查看原始数据与 MIT 许可</a>
+    </section>
+
+    <nav class="bottom-nav">
+      <button class="active">⌂<span>首页</span></button>
+      <button data-action="practice">▣<span>练习</span></button>
+      <button data-action="wrong">⚠<span>错题</span></button>
+    </nav>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <header class="quiz-header">
+      <button class="icon-button" id="back" aria-label="返回首页">←</button>
+      <div><strong id="mode-title">顺序练习</strong><small id="counter">1 / 5</small></div>
+      <button class="icon-button" id="favorite" aria-label="收藏题目">♡</button>
+    </header>
+    <div class="progress"><i id="progress-bar"></i></div>
+    <article class="question-card">
+      <div class="question-meta"><span id="question-type">单选题</span><em id="category">基础练习</em></div>
+      <h1 id="question-text"></h1>
+      <img id="question-image" class="question-image hidden" alt="题目配图">
+      <div id="options" class="options"></div>
+      <section id="result" class="result hidden"></section>
+    </article>
+    <footer class="question-nav">
+      <button id="previous">← 上一题</button>
+      <button class="primary" id="next">暂时不会 →</button>
+    </footer>
+  </section>
+</main>
+<script src="./app.js"></script>
+</body>
+</html>
