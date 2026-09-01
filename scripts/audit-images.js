@@ -8,15 +8,17 @@ const failures = [];
 let cursor = 0;
 
 async function check(url) {
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const response = await fetch(url, { headers: { Range: "bytes=0-1023", "User-Agent": "Ting-question-bank-audit/1.0" }, signal: AbortSignal.timeout(15000) });
+      const response = await fetch(url, { headers: { Range: "bytes=0-1023", "User-Agent": "Mozilla/5.0 Ting-question-bank-audit/1.1" }, signal: AbortSignal.timeout(30000) });
       const type = response.headers.get("content-type") || "";
       if (response.ok && type.startsWith("image/")) return;
-      if (attempt === 1) failures.push({ url, status: response.status, contentType: type });
+      if (response.body) await response.body.cancel();
+      if (attempt === 2) failures.push({ url, status: response.status, contentType: type });
     } catch (error) {
-      if (attempt === 1) failures.push({ url, error: error.message });
+      if (attempt === 2) failures.push({ url, error: error.message });
     }
+    await new Promise(resolve => setTimeout(resolve, 500 * (attempt + 1)));
   }
 }
 
@@ -27,7 +29,7 @@ async function worker() {
   }
 }
 
-Promise.all(Array.from({ length: 16 }, worker)).then(() => {
+Promise.all(Array.from({ length: 6 }, worker)).then(() => {
   console.log(JSON.stringify({ checked: urls.length, invalid: failures.length, failures }, null, 2));
   if (failures.length) process.exit(1);
 });
