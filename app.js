@@ -9,6 +9,14 @@ const storage=window.localStorage;
 let state=TingState.load(storage);
 let storageAvailable=true;
 let bank=FALLBACK.slice(),list=bank,index=0,selected=null,mode="practice",mockAnswers=new Set(),mockCorrect=0;
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("./sw.js").then(()=>navigator.serviceWorker.ready).then(()=>{
+      const note=$("source-note");
+      if(note&&!note.textContent.includes("离线"))note.textContent+=" · 已可离线使用";
+    }).catch(()=>{});
+  });
+}
 function persist(){storageAvailable=TingState.save(storage,state);return storageAvailable}
 function shuffle(items){const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]]}return result}
 function escapeHtml(value=""){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}

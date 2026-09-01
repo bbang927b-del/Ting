@@ -1,0 +1,19 @@
+{
+  "name": "婷婷科一 2026",
+  "short_name": "婷婷科一",
+  "description": "C1/C2 科目一免费练习、错题重练与动态路权解析",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f8f4",
+  "theme_color": "#18332c",
+  "icons": [
+    {
+      "src": "./icons/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

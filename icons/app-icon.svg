@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="婷婷科一">
+  <rect width="512" height="512" rx="112" fill="#18332c"/>
+  <path d="M110 299h292l-23-83c-7-24-29-41-54-41H187c-25 0-47 17-54 41l-23 83Z" fill="#f3b762"/>
+  <path d="M168 218h176l13 48H155l13-48Z" fill="#d9f1eb"/>
+  <path d="M106 283h300c22 0 40 18 40 40v61H66v-61c0-22 18-40 40-40Z" fill="#fff8e9"/>
+  <circle cx="148" cy="355" r="35" fill="#18332c"/>
+  <circle cx="364" cy="355" r="35" fill="#18332c"/>
+  <circle cx="148" cy="355" r="13" fill="#d9f1eb"/>
+  <circle cx="364" cy="355" r="13" fill="#d9f1eb"/>
+  <path d="M219 321h74" stroke="#18332c" stroke-width="18" stroke-linecap="round"/>
+</svg>
