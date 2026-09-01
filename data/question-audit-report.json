@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T01:20:55.193Z",
+  "generatedAt": "2026-09-01T02:01:00.488Z",
   "scope": "C1/C2 科目一，2026-09基准",
   "officialSources": [
     {
@@ -18,11 +18,11 @@
   "stats": {
     "original": 2115,
     "exactDuplicatesDeleted": 15,
-    "semanticDuplicatesDeleted": 214,
+    "semanticDuplicatesDeleted": 228,
     "outdatedHighRiskOrOutOfScopeDeleted": 103,
     "newQuestions": 7,
     "updatedQuestions": 19,
-    "final": 1790
+    "final": 1776
   },
   "items": [
     {
@@ -2493,8 +2493,8 @@
       "id": "201904101025214rp2bysitfrbhpbh4l9jjc",
       "question": "已经达到报废标准的机动车经大修后可以上路行驶。",
       "answer": "错误",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20190410102521kgfnqtf7ykf1kescuxzuov",
@@ -2612,8 +2612,8 @@
       "id": "2019041010252292ee4ot2s6ysq8c3wnn62r",
       "question": "年龄在70周岁以上的机动车驾驶人，应当每年进行一次身体检查。",
       "answer": "正确",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20190410102522gyrkqjvz8jutes3i47jobj",
@@ -3641,8 +3641,8 @@
       "id": "2019041010253378gbjbedkt9gauytfc57j6",
       "question": "提供虚假材料申领驾驶证的申请人会承担下列哪种法律责任？",
       "answer": "1年内不得再次申领驾驶证",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "201904101025332j8ikxsvr7arenhxxsdtzz",
@@ -4838,8 +4838,8 @@
       "id": "202007271502495ycd8xtktk3kamhqy5pbwz",
       "question": "机动车被监察机关、人民法院、人民检察院、行政执法部门依法查封、扣押的，（ ）不予办理注册登记？",
       "answer": "公安机关交通管理部门",
-      "reason": "已按2026现行规定改写过时解析或法规依据",
-      "status": "update"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20200727150249y6q6dij5wivkk5immxjnlz",
@@ -4957,8 +4957,8 @@
       "id": "202009141806306245fnstzv2ctz8r9ocnvj",
       "question": "机动车驾驶人申请学法减分时，一个记分周期内，累计最高扣减3分。",
       "answer": "错误",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20201016175724elutl8zy5eraefbqld6o5w",
@@ -5643,8 +5643,8 @@
       "id": "20220331160355txdgcfompqx17v5jf5hnmf",
       "question": "小型汽车驾驶人在一个记分周期内累积记分达到12分的，应当参加为期30日的道路交通安全法律、法规和相关知识学习。",
       "answer": "错误",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20220331160355ht7grfrw9tj5fvntt4x4jn",
@@ -5825,8 +5825,8 @@
       "id": "20220408192504ffz6rfhkjsy3jdutjwfsdg",
       "question": "申请人以欺骗、贿赂等不正当手段取得机动车驾驶证的，公安机关交通管理部门收缴机动车驾驶证，撤销机动车驾驶许可，处二千元以下罚款。",
       "answer": "正确",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20220408192504eyehw3jxdom74tfmifpxfd",
@@ -6049,15 +6049,15 @@
       "id": "20220408204038bgwk2motyjvhdhnwsefwrz",
       "question": "机动车驾驶人申请学法减分时，参加道路交通安全法律、法规和相关知识现场学习满一小时且考试合格的，一次扣减1分。",
       "answer": "错误",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20220408205457ny2v77vqfbteqhxzk29gzq",
       "question": "未取得机动车驾驶证驾驶机动车，发生负同等以上责任交通事故造成人员重伤或者死亡未满十年的，不得申请机动车驾驶证。",
       "answer": "正确",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20220408205457msgo7ac9qmshct6ehs6gbe",
@@ -6287,8 +6287,8 @@
       "id": "20220412175302sayjwjxsgqsqixijr6qa6w",
       "question": "在最近几个记分周期内，机动车驾驶人因饮酒后驾驶机动车受到过处罚的，不得通过交通安全教育扣减交通违法行为记分？",
       "answer": "3个",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20220412175302tnwppeuzcsnxfoktipzetc",
@@ -6371,8 +6371,8 @@
       "id": "20220414094149byodysobtkckwtjxggryxu",
       "question": "申请人在考试过程中有贿赂、舞弊行为的，取消考试资格，已经通过考试的其他科目成绩无效，并处1000元以下罚款。",
       "answer": "错误",
-      "reason": "高风险数字题：已按现行公安部令163/172号及现行道路交通法规筛查",
-      "status": "keep"
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     },
     {
       "id": "20220415112626fjyqnth6o3y4c3fczeaskr",
@@ -6618,6 +6618,27 @@
       "answer": "黄色",
       "reason": "已按2026现行规定改写过时解析或法规依据",
       "status": "update"
+    },
+    {
+      "id": "201904101025223hbjlv5mwweur8powksqyb",
+      "question": "驾驶机动车在道路上掉头时提前开启左转向灯。",
+      "answer": "正确",
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
+    },
+    {
+      "id": "201904101025269jfwh6zatrwuo2uzjvwkxe",
+      "question": "驾驶机动车行经漫水路或者漫水桥时，应当停车察明水情，快速通过。",
+      "answer": "错误",
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
+    },
+    {
+      "id": "20220412175301gltxpa64pettneuezgpmz",
+      "question": "机动车被监察机关、人民法院、人民检察院、行政执法部门依法查封、扣押的，不得办理注册登记。",
+      "answer": "正确",
+      "reason": "人工语义复核：正反问法、判断题与单选题重复考察同一事实",
+      "status": "delete"
     }
   ]
 }

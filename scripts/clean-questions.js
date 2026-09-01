@@ -27,6 +27,15 @@ const OBSOLETE_IDS = new Set([
 const HIGH_RISK = /罚款|记分|扣分|\d+分|年龄|周岁|驾驶证|实习期|换证|审验|吊销|暂扣|酒驾|醉驾|超速|超载|高速|新能源|C6|\d+天|\d+年|\d+元|百分之|%|公里/;
 const LOW_VALUE = /抵押|质押|共同所有|转让登记|变更登记|注销登记|住所迁|户籍|登记地车辆管理所|核发地车辆管理所/;
 const OUT_OF_SCOPE = /(A1|A2|A3|B1|B2|C3|C4|C5|C6|摩托车|轻便摩托|重型牵引|大型客车|中型客车|大型货车)/;
+const MANUAL_SEMANTIC_DELETE = new Set([
+  "201904101025214rp2bysitfrbhpbh4l9jjc", "201904101025269jfwh6zatrwuo2uzjvwkxe",
+  "201904101025223hbjlv5mwweur8powksqyb", "2019041010252292ee4ot2s6ysq8c3wnn62r",
+  "2019041010253378gbjbedkt9gauytfc57j6", "202007271502495ycd8xtktk3kamhqy5pbwz",
+  "20220412175301gltxpa64pettneuezgpmz", "20220408192504ffz6rfhkjsy3jdutjwfsdg",
+  "202009141806306245fnstzv2ctz8r9ocnvj", "20220414094149byodysobtkckwtjxggryxu",
+  "20220331160355txdgcfompqx17v5jf5hnmf", "20220408204038bgwk2motyjvhdhnwsefwrz",
+  "20220408205457ny2v77vqfbteqhxzk29gzq", "20220412175302sayjwjxsgqsqixijr6qa6w"
+]);
 
 const CANDIDATE_NEW_QUESTIONS = [
   {type:"judge",question:"申请C1或C2驾驶证，年龄达到18周岁即可，现行规定不设置最高申请年龄。",options:["正确","错误"],answer:0,explain:"C1、C2申请年龄下限是18周岁，没有最高年龄限制；70周岁以上申请人还需通过记忆力、判断力、反应力测试。",law:"《机动车驾驶证申领和使用规定》（公安部令第172号）第十四条。",category:"license"},
@@ -134,10 +143,13 @@ function build() {
   exact.removed.forEach(q => mark(q, "delete", "完全/标准化重复：同题干、同图片仅保留质量更高的一题"));
   const semantic = semanticDeduplicate(exact.kept);
   semantic.removed.forEach(q => mark(q, "delete", "语义重复：同类别、同一非空解析，属于同一考点的文字变体"));
+  const manualSemantic = semantic.kept.filter(q => MANUAL_SEMANTIC_DELETE.has(q.id));
+  manualSemantic.forEach(q => mark(q, "delete", "人工语义复核：正反问法、判断题与单选题重复考察同一事实"));
 
   let questions = [];
   let policyDeleted = 0;
   for (const q of semantic.kept) {
+    if (MANUAL_SEMANTIC_DELETE.has(q.id)) continue;
     if (isOutOfScope(q)) { mark(q, "delete", "不属于C1/C2核心范围或属于大车、摩托车、校车专属细节"); policyDeleted++; continue; }
     if (OBSOLETE_IDS.has(q.id)) { mark(q, "delete", "旧法规前提或旧版标志标线图片不再适配2026标准"); policyDeleted++; continue; }
     if (LOW_VALUE.test(q.question)) { mark(q, "delete", "低频登记业务细节，为控制题量且避免数字旧规风险而移出练习库"); policyDeleted++; continue; }
@@ -186,7 +198,7 @@ function build() {
     stats: {
       original: original.length,
       exactDuplicatesDeleted: exact.removed.length,
-      semanticDuplicatesDeleted: semantic.removed.length,
+      semanticDuplicatesDeleted: semantic.removed.length + manualSemantic.length,
       outdatedHighRiskOrOutOfScopeDeleted: policyDeleted,
       newQuestions: NEW_QUESTIONS.length,
       updatedQuestions: updatedIds.size,

@@ -5,7 +5,7 @@
     "build:questions": "node scripts/clean-questions.js",
     "audit:questions": "node scripts/audit-question-bank.js",
     "audit:images": "node scripts/audit-images.js",
-    "test": "node scripts/site-state-test.js && npm run audit:questions",
+    "test": "node scripts/mobile-layout-test.js && node scripts/site-state-test.js && npm run audit:questions",
     "test:full": "npm test && npm run audit:images"
   }
 }

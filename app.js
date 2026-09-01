@@ -8,7 +8,7 @@ const $=id=>document.getElementById(id);
 const storage=window.localStorage;
 let state=TingState.load(storage);
 let storageAvailable=true;
-let bank=FALLBACK.slice(),list=bank,index=0,selected=null,mode="practice",mockAnswers=new Set();
+let bank=FALLBACK.slice(),list=bank,index=0,selected=null,mode="practice",mockAnswers=new Set(),mockCorrect=0;
 function persist(){storageAvailable=TingState.save(storage,state);return storageAvailable}
 function shuffle(items){const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]]}return result}
 function escapeHtml(value=""){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
@@ -60,7 +60,7 @@ function stratifiedMock(items){
 async function start(nextMode){
   mode=nextMode;await bankPromise;
   if(mode==="wrong")list=bank.filter(q=>state.wrongIds.includes(q.id));
-  else if(mode==="mock"){list=stratifiedMock(bank);mockAnswers=new Set()}
+  else if(mode==="mock"){list=stratifiedMock(bank);mockAnswers=new Set();mockCorrect=0}
   else if(mode==="random")list=shuffle(bank);
   else list=bank;
   if(!list.length){alert("目前没有可练习的错题");updateHome();return}
@@ -90,13 +90,13 @@ function choose(choice){
   if(selected!==null)return;const q=current();selected=choice;const correct=choice===q.answer;
   state.answerTotal++;if(!state.answeredIds.includes(q.id))state.answeredIds.push(q.id);
   if(correct)state.correctCount++;else{state.wrongCount++;if(!state.wrongIds.includes(q.id))state.wrongIds.push(q.id)}
-  if(mode==="mock")mockAnswers.add(q.id);persist();
+  if(mode==="mock"){mockAnswers.add(q.id);if(correct)mockCorrect++}persist();
   [...$("options").children].forEach((button,i)=>button.classList.add(i===q.answer?"correct":i===choice?"wrong":"dim"));
   const animated=q.id==="f3"||/右转弯.*让.*左转弯|右转.*左转/.test(q.question);
   $("result").className="result "+(correct?"":"bad");
   $("result").innerHTML="<strong>"+(correct?"✓ 答对了 · 记录已保存":"✕ 答错了，已加入错题本 · 正确答案是 "+String.fromCharCode(65+q.answer))+"</strong>"+(animated?'<div class="animation-label" style="margin-top:18px">✨ 动态解析</div>'+roadAnimation():"")+"<h3>这样理解</h3><p>"+escapeHtml(q.explain)+"</p>"+(q.law?"<details><summary>查看法规依据</summary><p>"+escapeHtml(q.law)+"</p></details>":"");
   $("next").textContent="下一题 →";updateHome();
-  if(mode==="mock"&&mockAnswers.size===list.length){state.mockRecords.push({date:new Date().toISOString(),correct:list.length-state.wrongCount,total:list.length});state.mockRecords=state.mockRecords.slice(-20);persist()}
+  if(mode==="mock"&&mockAnswers.size===list.length){state.mockRecords.push({date:new Date().toISOString(),correct:mockCorrect,total:list.length});state.mockRecords=state.mockRecords.slice(-20);persist()}
 }
 function nextAction(){selected===null?choose(-1):next()}
 function next(){index=(index+1)%list.length;selected=null;savePosition();render();scrollTo(0,0)}
