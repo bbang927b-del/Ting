@@ -4,6 +4,8 @@
   "scripts": {
     "build:questions": "node scripts/clean-questions.js",
     "audit:questions": "node scripts/audit-question-bank.js",
-    "test": "node scripts/site-state-test.js && npm run audit:questions"
+    "audit:images": "node scripts/audit-images.js",
+    "test": "node scripts/site-state-test.js && npm run audit:questions",
+    "test:full": "npm test && npm run audit:images"
   }
 }
