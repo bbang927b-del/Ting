@@ -1,0 +1,9 @@
+{
+  "name": "ting-driving-test",
+  "private": true,
+  "scripts": {
+    "build:questions": "node scripts/clean-questions.js",
+    "audit:questions": "node scripts/audit-question-bank.js",
+    "test": "node scripts/site-state-test.js && npm run audit:questions"
+  }
+}
